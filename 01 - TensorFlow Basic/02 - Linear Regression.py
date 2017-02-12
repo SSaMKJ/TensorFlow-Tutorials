@@ -3,10 +3,11 @@
 
 import tensorflow as tf
 
-
+# train set
 x_data = [1, 2, 3]
 y_data = [1, 2, 3]
 
+# 반드시 tensorFlow가 지원하는 Variable로 해야 tf가 값을 변경할 수 있기 때문에 반드시 tf가 지원하는 Variable로 지정해야 한다.
 W = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
 b = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
 
@@ -28,17 +29,19 @@ train_op = optimizer.minimize(cost)
 
 # 세션을 생성하고 초기화합니다.
 with tf.Session() as sess:
+    # W, b 가 변수인데, 초기화를 안하면 초기화가 안되었다는 에러 메시지가 나타난다.
+    # 세션에서 가장 먼저 실행시켜줘야 한다.
     sess.run(tf.global_variables_initializer())
 
     # 최적화를 100번 수행합니다.
-    for step in xrange(100):
+    for step in range(100):
         # sess.run 을 통해 train_op 와 cost 그래프를 계산합니다.
         # 이 때, 가설 수식에 넣어야 할 실제값을 feed_dict 을 통해 전달합니다.
         _, cost_val = sess.run([train_op, cost], feed_dict={X: x_data, Y: y_data})
 
-        print step, cost_val, sess.run(W), sess.run(b)
+        print(step, cost_val, sess.run(W), sess.run(b))
 
-    print "\n=== Test ==="
+    print("\n=== Test ===")
     # 최적화가 완료된 모델에 테스트 값을 넣고 결과가 잘 나오는지 확인해봅니다.
-    print "X: 5, Y:", sess.run(hypothesis, feed_dict={X: 5})
-    print "X: 2.5, Y:", sess.run(hypothesis, feed_dict={X: 2.5})
+    print("X: 5, Y:", sess.run(hypothesis, feed_dict={X: 5}))
+    print("X: 2.5, Y:", sess.run(hypothesis, feed_dict={X: 2.5}))
