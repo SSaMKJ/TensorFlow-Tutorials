@@ -122,11 +122,11 @@ for epoch in range(100):
     _, loss3 = sess.run([train_op, cost],
                         feed_dict={enc_input: x_batch2, dec_input: y_batch2, targets: target_batch2})
 
-    print 'Epoch:', '%04d' % (epoch + 1), 'cost =', \
+    print ('Epoch:', '%04d' % (epoch + 1), 'cost =', \
         'bucket[4] =', '{:.6f}'.format(loss4), \
-        'bucket[3] =', '{:.6f}'.format(loss3)
+        'bucket[3] =', '{:.6f}'.format(loss3))
 
-print '최적화 완료!'
+print ('최적화 완료!')
 
 
 #########
@@ -143,11 +143,11 @@ def prediction_test(seq_data):
                                                       dec_input: y_batch_t,
                                                       targets: target_batch_t})
 
-    print "\n=== 예측 결과 ==="
-    print '순차열:', seq_data
-    print '실제값:', [[num_arr[j] for j in dec] for dec in real]
-    print '예측값:', [[num_arr[i] for i in dec] for dec in predict]
-    print '정확도:', accuracy_val
+    print ("\n=== 예측 결과 ===")
+    print ('순차열:', seq_data)
+    print ('실제값:', [[num_arr[j] for j in dec] for dec in real])
+    print ('예측값:', [[num_arr[i] for i in dec] for dec in predict])
+    print ('정확도:', accuracy_val)
 
 
 # 학습 데이터에 있던 시퀀스로 테스트
@@ -193,24 +193,24 @@ def decode_loop(seq_data):
     return decode_seq
 
 
-print "\n=== 한글자씩 점진적으로 시퀀스를 예측 ==="
+print ("\n=== 한글자씩 점진적으로 시퀀스를 예측 ===")
 
 seq_data = ['123', '']
-print "123 ->", decode_loop(seq_data)
+print ("123 ->", decode_loop(seq_data))
 
 seq_data = ['67', '']
-print "67 ->", decode_loop(seq_data)
+print ("67 ->", decode_loop(seq_data))
 
 seq_data = ['3456', '']
-print "3456 ->", decode_loop(seq_data)
+print ("3456 ->", decode_loop(seq_data))
 
-print "\n=== 전체 시퀀스를 한 번에 예측 ==="
+print ("\n=== 전체 시퀀스를 한 번에 예측 ===")
 
 seq_data = ['123', 'PPP']
-print "123 ->", decode(seq_data)
+print ("123 ->", decode(seq_data))
 
 seq_data = ['67', 'PP']
-print "67 ->", decode(seq_data)
+print ("67 ->", decode(seq_data))
 
 seq_data = ['3456', 'PPPP']
-print "3456 ->", decode(seq_data)
+print ("3456 ->", decode(seq_data))

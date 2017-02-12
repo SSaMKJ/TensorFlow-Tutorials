@@ -104,13 +104,13 @@ for epoch in range(10):
     _, loss = sess.run([train_op, cost], feed_dict={X: x_batch, Y: y_batch})
 
     # 학습하는 동안 예측값의 변화를 출력해봅니다.
-    print sess.run(tf.argmax(logits, 1), feed_dict={X: x_batch, Y: y_batch})
-    print sess.run(tf.argmax(Y, 1), feed_dict={X: x_batch, Y: y_batch})
+    print(sess.run(tf.argmax(logits, 1), feed_dict={X: x_batch, Y: y_batch}))
+    print(sess.run(tf.argmax(Y, 1), feed_dict={X: x_batch, Y: y_batch}))
 
-    print 'Epoch:', '%04d' % (epoch + 1), \
-        'cost =', '{:.6f}'.format(loss)
+    print('Epoch:', '%04d' % (epoch + 1), \
+        'cost =', '{:.6f}'.format(loss))
 
-print '최적화 완료!'
+print('최적화 완료!')
 
 
 #########
@@ -126,9 +126,9 @@ x_batch, y_batch = one_hot_seq(seq_data)
 real, predict, accuracy_val = sess.run([tf.argmax(Y, 1), prediction, accuracy],
                                        feed_dict={X: x_batch, Y: y_batch})
 
-print "\n=== 예측 결과 ==="
-print '순차열:', seq_data
-print '실제값:', [num_arr[i] for i in real]
-print '예측값:', [num_arr[i] for i in predict]
-print '정확도:', accuracy_val
+print("\n=== 예측 결과 ===")
+print('순차열:', seq_data)
+print('실제값:', [num_arr[i] for i in real])
+print('예측값:', [num_arr[i] for i in predict])
+print('정확도:', accuracy_val)
 

@@ -10,6 +10,7 @@ from model import Seq2Seq
 from dialog import Dialog
 
 
+
 class ChatBot:
 
     def __init__(self, voc_path, train_dir):
@@ -28,7 +29,7 @@ class ChatBot:
         line = sys.stdin.readline()
 
         while line:
-            print self.get_replay(line.strip())
+            print (self.get_replay(line.strip()))
 
             sys.stdout.write("\n> ")
             sys.stdout.flush()
@@ -72,7 +73,7 @@ class ChatBot:
 
 
 def main(_):
-    print "깨어나는 중 입니다. 잠시만 기다려주세요...\n"
+    print ("깨어나는 중 입니다. 잠시만 기다려주세요...\n")
 
     chatbot = ChatBot(FLAGS.voc_path, FLAGS.train_dir)
     chatbot.run()

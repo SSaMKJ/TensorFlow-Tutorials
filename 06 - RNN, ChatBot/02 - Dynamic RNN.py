@@ -96,11 +96,11 @@ for epoch in range(30):
     _, loss4 = sess.run([train_op, cost], feed_dict={X: x_batch, Y: y_batch})
     _, loss3 = sess.run([train_op, cost], feed_dict={X: x_batch2, Y: y_batch2})
 
-    print 'Epoch:', '%04d' % (epoch + 1), 'cost =', \
+    print('Epoch:', '%04d' % (epoch + 1), 'cost =', \
         'bucket[4] =', '{:.6f}'.format(loss4), \
-        'bucket[3] =', '{:.6f}'.format(loss3)
+        'bucket[3] =', '{:.6f}'.format(loss3))
 
-print '최적화 완료!'
+print('최적화 완료!')
 
 
 #########
@@ -116,12 +116,11 @@ def prediction(seq_data):
     real, predict, accuracy_val = sess.run([labels, prediction, accuracy],
                                            feed_dict={X: x_batch_t, Y: y_batch_t})
 
-    print "\n=== 예측 결과 ==="
-    print '순차열:', seq_data
-    print '실제값:', [num_arr[i] for i in real]
-    print '예측값:', [num_arr[i] for i in predict]
-    print '정확도:', accuracy_val
-
+    print("\n=== 예측 결과 ===")
+    print('순차열:', seq_data)
+    print('실제값:', [num_arr[i] for i in real])
+    print('예측값:', [num_arr[i] for i in predict])
+    print('정확도:', accuracy_val)
 
 # 학습 데이터에 있던 시퀀스로 테스트
 seq_data_test = ['123', '345', '789']
