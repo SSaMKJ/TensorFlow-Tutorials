@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # 텐서플로우의 기본적인 구성을 익힙니다.
 
 import tensorflow as tf
@@ -6,6 +5,7 @@ import tensorflow as tf
 
 # tf.constant: 말 그대로 상수입니다.
 hello = tf.constant('Hello, TensorFlow!')
+# constant 자체도 하나의 노드입니다.
 
 a = tf.constant(10)
 b = tf.constant(32)
@@ -36,19 +36,25 @@ sess.run(tf.global_variables_initializer())
 # 위에서 변수와 수식들을 정의했지만, 실행이 정의한 시점에서 실행되는 것은 아닙니다.
 # 다음처럼 sess.run 함수를 사용하면 그 때 계산이 됩니다.
 # 따라서 모델을 구성하는 것과, 실행하는 것을 분리하여 프로그램을 깔끔하게 작성할 수 있습니다.
-print "=== contants ==="
-print sess.run(hello)
-print "a + b = c =", sess.run(c)
-print "=== x_data ==="
-print x_data
-print "=== W ==="
-print sess.run(W)
-print "=== b ==="
-print sess.run(b)
-print "=== expr ==="
+print("=== contants hello ===", end=" ")
+print(sess.run(hello))  # run은 노드를 실행 시킵니다.
+print("a",a ," + b", b, " = c =", sess.run(c))
+# a Tensor("Const_1:0", shape=(), dtype=int32)  + b Tensor("Bias/read:0", shape=(2, 1), dtype=float32)  = c = 42
+# a 는 Tensor의 노드이다. run을 하지 않으면 Tensor 객체가 나온다.
+# a 는 실제로는 상수가 아니다. run을 해야만 노드(operation)가 실행이 되고, 우리가 예상한 값이 나온다.
+print("a (", sess.run(a) ,") + b(", sess.run(b), ") = c =", sess.run(c))
+# a ( 10 ) + b( [[ 1.65800536]
+#  [ 0.28102955]] ) = c = 42
+print("=== x_data ===", end=" ")
+print(x_data)
+print("=== W ===", end=" ")
+print(sess.run(W))
+print("=== b ===", end=" ")
+print(sess.run(b))
+print("=== expr ===", end=" ")
 # expr 수식에는 X 라는 입력값이 필요합니다.
 # 따라서 expr 실행시에는 이 변수에 대한 실제 입력값을 다음처럼 넣어줘야합니다.
-print sess.run(expr, feed_dict={X: x_data})
+print(sess.run(expr, feed_dict={X: x_data}))
 
 # 세션을 닫습니다.
 sess.close()
