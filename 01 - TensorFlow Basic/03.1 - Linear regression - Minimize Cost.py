@@ -9,13 +9,15 @@ W = tf.Variable(tf.random_uniform([1], -10.0, 10.0))
 X = tf.placeholder(tf.float32)
 Y = tf.placeholder(tf.float32)
 
-
-hypothesis = W*X
+# y = Wx 로 식을 단순화
+hypothesis = W * X
 
 cost = tf.reduce_mean(tf.square(hypothesis - Y))
 
+# W 값을 재계산
 descent = W - tf.mul(0.1, tf.reduce_mean(tf.mul((tf.mul(W, X) - Y), X)))
 
+# 업데이트 된 W 값을 재할당
 update = W.assign(descent)
 
 init = tf.global_variables_initializer()
