@@ -16,7 +16,7 @@ operation에 타입만 정해서 넘겨서 모델을 생성한다.
 Node=Operation=Model은 동의어이다.
 """
 add = tf.add(a, b)
-mul = tf.mul(a, b)
+mul = tf.multiply(a, b)
 
 """
 실제 operation이 동작할 때 값을 넘긴다.

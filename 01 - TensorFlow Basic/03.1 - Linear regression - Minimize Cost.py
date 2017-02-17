@@ -15,7 +15,7 @@ hypothesis = W * X
 cost = tf.reduce_mean(tf.square(hypothesis - Y))
 
 # W 값을 재계산
-descent = W - tf.mul(0.1, tf.reduce_mean(tf.mul((tf.mul(W, X) - Y), X)))
+descent = W - tf.multiply(0.1, tf.reduce_mean(tf.multiply((tf.multiply(W, X) - Y), X)))
 
 # 업데이트 된 W 값을 재할당
 update = W.assign(descent)

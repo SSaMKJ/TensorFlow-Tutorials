@@ -12,7 +12,7 @@ m = n_samles = len(X)
 W = tf.placeholder(tf.float32)
 
 # linear model 생성
-hypothesis = tf.mul(X, W)
+hypothesis = tf.multiply(X, W)
 
 # cost 함수
 cost = tf.reduce_sum(tf.pow(hypothesis-Y, 2))/(m)
