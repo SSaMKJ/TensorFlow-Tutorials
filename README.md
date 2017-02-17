@@ -25,9 +25,4 @@ Python 3.6을 사용합니다.
 
 
 
-## 참고
 
-조금 더 기초적인 이론에 대한 내용은 다음 강좌와 저장소를 참고하세요.
-
-
-- [강좌 실습 코드](https://github.com/golbin/TensorFlow-ML-Exercises) (내가 만듬)
