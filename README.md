@@ -12,10 +12,10 @@ Python 3.6을 사용합니다.
 
 ## 요구사항
 
-- TensorFlow 1.0
-- Python 3.6
-    - numpy 1.11
-    - matplotlib 1.5
+- TensorFlow 1.0.0
+- Python 3.6.0
+    - numpy 1.12.0
+    - matplotlib 2.0.0
 
 ## 간단한 설명
 
