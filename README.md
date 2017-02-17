@@ -12,6 +12,7 @@ Python 3.6을 사용합니다.
 
 ## 요구사항
 
+- Mac
 - TensorFlow 1.0.0
 - Python 3.6.0
     - numpy 1.12.0
