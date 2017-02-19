@@ -23,10 +23,10 @@ b = tf.Variable(tf.zeros([10]))
 
 
 # Construct model
-hypothesis = tf.nn.softmax(tf.matmul(x, W) + b) # Softmax
+activation = tf.nn.softmax(tf.matmul(x, W) + b) # Softmax
 
 # Minimize error using "cross entropy"
-cost = tf.reduce_mean(-tf.reduce_sum(y * tf.log(hypothesis), reduction_indices=1))
+cost = tf.reduce_mean(-tf.reduce_sum(y * tf.log(activation), reduction_indices=1))
 # Gradient Descent
 optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost)
 
@@ -56,14 +56,14 @@ with tf.Session() as sess:
     print("Optimization Finished!")
 
     # Test model
-    correct_prediction = tf.equal(tf.argmax(hypothesis, 1), tf.argmax(y, 1))
+    correct_prediction = tf.equal(tf.argmax(activation, 1), tf.argmax(y, 1))
     # Calculate accuracy
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
     print("Accuracy:", accuracy.eval({x: mnist.test.images, y: mnist.test.labels}))
 
     r = randint(0, mnist.test.num_examples - 1)
     print("Label : ", sess.run(tf.argmax(mnist.test.labels[r:r+1], 1)))
-    print("Prediction:", sess.run(tf.argmax(hypothesis, 1), {x:mnist.test.images[r:r+1]}))
+    print("Prediction:", sess.run(tf.argmax(activation, 1), {x: mnist.test.images[r:r + 1]}))
 
     plt.imshow(mnist.test.images[r:r+1].reshape(28, 28), cmap='Greys', interpolation='nearest')
     plt.show()
