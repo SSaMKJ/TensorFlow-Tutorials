@@ -51,7 +51,7 @@ with tf.name_scope('biase'):
 # h = tf.matmul(X, W)
 # L2 = tf.sigmoid(tf.matmul(W1, X) + b1)
 # hypothesis = tf.sigmoid(tf.matmul(W2, L2) + b2)
-L2 = tf.sigmoid(tf.matmul(X, W1) + b1)
+L2 = tf.nn.relu(tf.matmul(X, W1) + b1)
 hypothesis = tf.sigmoid(tf.matmul(L2, W2) + b2)
 # hypothesis = tf.sigmoid(h)
 
