@@ -69,7 +69,8 @@ init = tf.global_variables_initializer()
 with tf.Session() as sess:
     sess.run(init)
     train_writer = tf.summary.FileWriter('./log/mnist', sess.graph)
-
+    # cd /Library/Frameworks/Python.framework/Versions/3.6/bin
+    # ./tensorboard --logdir /User/kimjinsam/....
 
     with tf.name_scope('cost'):
         with tf.name_scope('correct_prediction'):
