@@ -98,7 +98,7 @@ class DQN:
 
         # DQN 의 손실 함수를 구성하는 부분입니다. 다음 수식을 참고하세요.
         # Perform a gradient descent step on (y_j-Q(ð_j,a_j;θ))^2
-        Q_action = tf.reduce_sum(tf.mul(Q_value, self.input_action), axis=1)
+        Q_action = tf.reduce_sum(tf.multiply(Q_value, self.input_action), axis=1)
         cost = tf.reduce_mean(tf.square(self.input_Y - Q_action))
         train_op = tf.train.AdamOptimizer(1e-6).minimize(cost, global_step=self.global_step)
 
