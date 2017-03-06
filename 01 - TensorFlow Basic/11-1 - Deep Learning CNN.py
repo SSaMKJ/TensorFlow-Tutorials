@@ -8,7 +8,7 @@ import time
 # Import MNIST data
 from tensorflow.examples.tutorials.mnist import input_data
 
-mnist = input_data.read_data_sets("/tmp/data/", one_hot=True)
+mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
 batch_size = 128
 test_size = 2048
